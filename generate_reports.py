@@ -1,5 +1,6 @@
 import os
 import random
+from datetime import date, timedelta
 
 import names
 
@@ -19,11 +20,17 @@ def generate_reports(num):
             random.shuffle(subjects)
             subjects_number = random.randint(8, 10)
             student_subjects = subjects[:subjects_number]
+            report_generation_date = date.today() - timedelta(days=random.randint(0, 7))
 
             subjects_and_marks = generate_subjects_and_marks(student_subjects)
             student_marks_report = generate_marks_report(subjects_and_marks)
 
-            f.write(student_marks_report)
+            report_text = f'Student name: {student_name}:\n\n' + \
+                f'Report generated on {report_generation_date}\n\n' + \
+                'Student final marks:\n\n' + \
+                f'{student_marks_report}'
+
+            f.write(report_text)
 
 
 def delete_reports():
@@ -33,7 +40,7 @@ def delete_reports():
 
 
 def generate_subjects_and_marks(student_subjects):
-    return {subject: round(random.uniform(0, 10), 1)
+    return {subject: round(random.uniform(3.5, 10), 1)
             for subject in student_subjects}
 
 
@@ -46,5 +53,5 @@ def generate_marks_report(subjects_and_marks):
 
 
 if __name__ == '__main__':
-    generate_reports(2)
-    # delete_reports()
+    # generate_reports(10)
+    delete_reports()
