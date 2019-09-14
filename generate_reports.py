@@ -1,4 +1,5 @@
 import os
+import sys
 import random
 from datetime import date, timedelta
 
@@ -25,7 +26,7 @@ def generate_reports(num):
             subjects_and_marks = generate_subjects_and_marks(student_subjects)
             student_marks_report = generate_marks_report(subjects_and_marks)
 
-            report_text = f'Student name: {student_name}:\n\n' + \
+            report_text = f'Student name: {student_name}\n\n' + \
                 f'Report generated on {report_generation_date}\n\n' + \
                 'Student final marks:\n\n' + \
                 f'{student_marks_report}'
@@ -53,5 +54,13 @@ def generate_marks_report(subjects_and_marks):
 
 
 if __name__ == '__main__':
-    # generate_reports(10)
-    delete_reports()
+    try:
+        action = sys.argv[1]
+        value = int(sys.argv[2])
+    except IndexError:
+        pass
+
+    if action == '-d':
+        delete_reports()
+    elif action == '-g':
+        generate_reports(value)
