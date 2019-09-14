@@ -13,9 +13,11 @@ subjects = ['English', "French", "Science", "Music", "Art", "Biology",
 def generate_reports(num):
     assert type(num) == int, 'Please, introduce a number to generate reports.'
 
-    for student_number in range(num):
-        student_name = names.get_full_name()
-        filename = student_name.lower().replace(' ', '_') + '_marks.txt'
+    for i, student_number in enumerate(range(num)):
+        max_number_characters = len(str(num))
+        student_name = names.get_full_name().lower().replace(' ', '_')
+
+        filename = f'{str(i+1).zfill(max_number_characters)}_{student_name}_marks.txt'
 
         with open(filename, 'w') as f:
             random.shuffle(subjects)
