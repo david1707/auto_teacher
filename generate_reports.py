@@ -14,10 +14,11 @@ def generate_reports(num):
     assert type(num) == int, 'Please, introduce a number to generate reports.'
 
     for i, student_number in enumerate(range(num)):
-        # Generate  values
+        # Generate values
         max_number_characters = len(str(num))
-        student_name = names.get_full_name().lower().replace(' ', '_')
-        filename = f'{str(i+1).zfill(max_number_characters)}_{student_name}_marks.txt'
+        student_name = names.get_full_name()
+        student_name_to_file = student_name.lower().replace(' ', '_')
+        filename = f'{str(i+1).zfill(max_number_characters)}_{student_name_to_file}_marks.txt'
 
         with open(filename, 'w') as f:
 
