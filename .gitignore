@@ -1,5 +1,9 @@
 Pipfile
 Pipfile.lock
+
 *.vscode
-*.txt
 *.zip
+
+*.txt
+!requirements.txt
+
