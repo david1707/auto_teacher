@@ -1,4 +1,5 @@
 import os
+import shutil
 
 
 passed_reports_folder = 'students_passed'
@@ -25,6 +26,8 @@ def process_reports():
 			move_to_folder(report, total_failed_subjects)
 
 	# Zip both folders
+	shutil.make_archive(failed_reports_folder, compression_type, failed_reports_folder)
+	shutil.make_archive(passed_reports_folder, compression_type, passed_reports_folder)
 
 
 def generate_folders():
