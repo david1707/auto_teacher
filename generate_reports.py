@@ -70,3 +70,5 @@ if __name__ == '__main__':
         delete_reports()
     elif action == '-g':
         generate_reports(value)
+    else:
+        print('Action not recognized.')
