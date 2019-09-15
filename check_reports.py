@@ -88,7 +88,7 @@ if __name__ == '__main__':
 	action = sys.argv[1]
 	if action == '-p':
 		process_reports()
-	elif action == '-d':
+	elif action == '-c':
 		clean_everything()
 	else:
 		print('Action not recognized.')
