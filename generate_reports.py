@@ -11,7 +11,6 @@ subjects = ['English', "French", "Science", "Music", "Art", "Biology",
 
 
 def generate_reports(num):
-    assert type(num) == int, 'Please, introduce a number to generate reports.'
 
     for i, student_number in enumerate(range(num)):
         # Generate values
@@ -64,8 +63,9 @@ if __name__ == '__main__':
     try:
         action = sys.argv[1]
         value = int(sys.argv[2])
-    except IndexError:
-        pass
+    except Exception:
+        print("Write '-d' to remove all the .txt files or '-g X' to generate X files")
+        sys.exit(0)
 
     if action == '-d':
         delete_reports()
