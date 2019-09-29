@@ -22,8 +22,8 @@ def process_reports():
 				total_failed_subjects = calculate_failed_subjects(
 					subjects_and_marks)
 
-				# Move to folder
-				move_to_folder(report, total_failed_subjects)
+			# Move to folder
+			move_to_folder(report, total_failed_subjects)
 
 	# Zip both folders
 	shutil.make_archive(failed_reports_folder,
