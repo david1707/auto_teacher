@@ -17,14 +17,13 @@ def process_reports():
 		if report.endswith('_marks.txt'):
 
 			# Checks if the student has passed
-			f = open(report, 'r')
-			subjects_and_marks = f.readlines()[6:]
-			total_failed_subjects = calculate_failed_subjects(
-				subjects_and_marks)
-			f.close()
+			with open(report, 'r') as f:
+				subjects_and_marks = f.readlines()[6:]
+				total_failed_subjects = calculate_failed_subjects(
+					subjects_and_marks)
 
-			# Move to folder
-			move_to_folder(report, total_failed_subjects)
+				# Move to folder
+				move_to_folder(report, total_failed_subjects)
 
 	# Zip both folders
 	shutil.make_archive(failed_reports_folder,

@@ -12,12 +12,12 @@ subjects = ['English', "French", "Science", "Music", "Art", "Biology",
 
 def generate_reports(num):
 
-    for i, student_number in enumerate(range(num)):
+    for student_number in range(num):
         # Generate values
         max_number_characters = len(str(num))
         student_name = names.get_full_name()
         student_name_to_file = student_name.lower().replace(' ', '_')
-        filename = f'{str(i+1).zfill(max_number_characters)}_{student_name_to_file}_marks.txt'
+        filename = f'{str(student_number+1).zfill(max_number_characters)}_{student_name_to_file}_marks.txt'
 
         with open(filename, 'w') as f:
 
@@ -60,12 +60,14 @@ def generate_marks_report(subjects_and_marks):
 
 
 if __name__ == '__main__':
-    try:
-        action = sys.argv[1]
-        value = int(sys.argv[2])
-    except Exception:
-        print("Write '-d' to remove all the .txt files or '-g X' to generate X files")
-        sys.exit(0)
+    action = sys.argv[1]
+
+    if action == '-g':
+        try:
+            value = int(sys.argv[2])
+        except Exception:
+            print("Write '-d' to remove all the .txt files or '-g X' to generate X files")
+            sys.exit(0)
 
     if action == '-d':
         delete_reports()
